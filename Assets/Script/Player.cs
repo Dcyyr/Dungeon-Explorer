@@ -39,10 +39,29 @@ public class Player : MonoBehaviour
     //死亡
     public bool m_IsDead = false;
 
+
+    //Grounded
+    public bool m_IsGrounded = true;
+    public float m_Gravity = -3.5f;
+
+    public static Player instance;
+
     private void Awake()
     {
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         m_RB = GetComponent<Rigidbody>();
         m_Anim = GetComponent<Animator>();
+
+        m_RB.freezeRotation = true;//冻结旋转，防止物理碰撞导致角色旋转
+        m_RB.useGravity = false;//不受重力影响
     }
 
     private void Update()
@@ -142,6 +161,13 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        if (!m_IsGrounded)
+        {
+            transform.Translate(0, m_Gravity * Time.fixedDeltaTime, 0);
+        }
+
+
         if (m_IsRolling)
         {
             m_RB.velocity = transform.forward * m_Speed * 2f;
@@ -151,6 +177,7 @@ public class Player : MonoBehaviour
 
         m_RB.velocity = m_InputDirection * m_Speed;
 
+      
     }
 
 
@@ -176,4 +203,32 @@ public class Player : MonoBehaviour
         m_IsDead = true;
         m_Anim.SetTrigger("Dead");
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Floor"))
+        {
+            m_IsGrounded = true;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Floor"))
+        {
+            m_IsGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Floor"))
+        {
+            m_IsGrounded = false;
+        }
+    }
+
+
+
 }
