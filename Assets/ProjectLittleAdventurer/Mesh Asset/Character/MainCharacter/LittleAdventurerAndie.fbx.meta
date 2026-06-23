@@ -121,24 +121,24 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.13685691
-        functionName: OpenAttackTrigger
+      - time: 0.30612242
+        functionName: DisableAttackBox
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 6a4b41443396fa74f98fa839af1e4e94, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.1372273
+      - time: 0.16046512
+        functionName: EnableAttackBox
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6a4b41443396fa74f98fa839af1e4e94, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.13488372
         functionName: Attack1
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 0efc81b5740102a4cb8b7eec058b3f85, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.30612242
-        functionName: CloseAttackTrigger
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 6a4b41443396fa74f98fa839af1e4e94, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -179,14 +179,14 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.14285716
-        functionName: OpenAttackTrigger
+        functionName: EnableAttackBox
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 6a4b41443396fa74f98fa839af1e4e94, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.29171667
-        functionName: CloseAttackTrigger
+        functionName: DisableAttackBox
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 6a4b41443396fa74f98fa839af1e4e94, type: 3}
         floatParameter: 0
@@ -229,14 +229,14 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.18607442
-        functionName: OpenAttackTrigger
+        functionName: EnableAttackBox
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 6a4b41443396fa74f98fa839af1e4e94, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.35894355
-        functionName: CloseAttackTrigger
+        functionName: DisableAttackBox
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 6a4b41443396fa74f98fa839af1e4e94, type: 3}
         floatParameter: 0
@@ -306,14 +306,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.9825175
-        functionName: BeingHitAnimationEnds
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

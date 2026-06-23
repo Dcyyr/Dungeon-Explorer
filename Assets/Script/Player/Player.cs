@@ -1,6 +1,3 @@
-using OpenCover.Framework.Model;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -32,7 +29,6 @@ public class Player : MonoBehaviour
     public bool m_IsHurt = false;
     public float m_InvisibleDuration = 0.5f;//无敌持续时间
     public float m_InvisibleTimer;
-
     public float m_MaxHealth = 100f;
     public float m_CurrentHealth;
 
@@ -45,6 +41,11 @@ public class Player : MonoBehaviour
     public float m_Gravity = -3.5f;
 
     public static Player instance;
+
+
+    //attack 
+    public float m_AttackDamage = 20f;
+    public BoxCollider m_AttackBox;
 
     private void Awake()
     {
@@ -62,6 +63,13 @@ public class Player : MonoBehaviour
 
         m_RB.freezeRotation = true;//冻结旋转，防止物理碰撞导致角色旋转
         m_RB.useGravity = false;//不受重力影响
+
+        m_CurrentHealth = m_MaxHealth;
+    }
+
+    private void Start()
+    {
+        m_AttackBox = transform.Find("Attackbox").GetComponent<BoxCollider>();
     }
 
     private void Update()
@@ -70,7 +78,7 @@ public class Player : MonoBehaviour
         if (m_IsDead)
             return;
 
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             m_Anim.SetTrigger("Attack");
         }
@@ -102,7 +110,7 @@ public class Player : MonoBehaviour
         if (m_InputDirection != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(m_InputDirection);
-            Debug.Log("Input Direction: " + m_InputDirection);
+            //Debug.Log("Input Direction: " + m_InputDirection);
         }
 
 
@@ -137,9 +145,9 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(m_IsHurt)
+        if (m_IsHurt)
         {
-            m_InvisibleTimer +=Time.deltaTime;
+            m_InvisibleTimer += Time.deltaTime;
             if (m_InvisibleTimer >= m_InvisibleDuration)
             {
                 m_IsHurt = false;
@@ -147,12 +155,12 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Die();
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Hurt(20f);
         }
@@ -177,7 +185,17 @@ public class Player : MonoBehaviour
 
         m_RB.velocity = m_InputDirection * m_Speed;
 
-      
+
+    }
+
+    public void EnableAttackBox()
+    {
+        m_AttackBox.enabled = true;
+    }
+
+    public void DisableAttackBox()
+    {
+        m_AttackBox.enabled = false;
     }
 
 
@@ -185,13 +203,13 @@ public class Player : MonoBehaviour
     {
         if (m_IsHurt)
             return;
-
+        Debug.Log("玩家受伤: " + damage);
         m_CurrentHealth -= damage;
         m_CurrentHealth = Mathf.Max(0, m_CurrentHealth);
         m_IsHurt = true;
         m_Anim.SetTrigger("Hurt");
 
-        if (m_CurrentHealth == 0)
+        if (m_CurrentHealth <= 0)
         {
             Die();
             return;
@@ -207,7 +225,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Floor"))
+        if (collision.collider.CompareTag("Floor"))
         {
             m_IsGrounded = true;
         }

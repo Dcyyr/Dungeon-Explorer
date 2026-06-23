@@ -95,21 +95,21 @@ ModelImporter:
       - time: 0.48751637
         functionName: AttackVFX
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 19dc6189fb2e7ca48b4bc04e60c06ab9, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: 8f15dee3358ad344b869063dc6e02c92, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.44654852
-        functionName: OpenAttackTrigger
+      - time: 0.4752252
+        functionName: EnableAttackBox
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 4594d83b4ebe8f54b83111049b8784ae, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: 8e73bcc370b9d41438085bf6051ead78, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6737935
-        functionName: CloseAttackTrigger
+      - time: 0.5833333
+        functionName: DisableAttackBox
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 4594d83b4ebe8f54b83111049b8784ae, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: 8e73bcc370b9d41438085bf6051ead78, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -229,17 +229,17 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.47263682
-        functionName: FootStepVFX
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 19dc6189fb2e7ca48b4bc04e60c06ab9, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.9462686
         functionName: FootStepVFX
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 19dc6189fb2e7ca48b4bc04e60c06ab9, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: 8f15dee3358ad344b869063dc6e02c92, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4617117
+        functionName: FootStepVFX
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 8f15dee3358ad344b869063dc6e02c92, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
