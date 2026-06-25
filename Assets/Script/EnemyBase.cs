@@ -55,5 +55,7 @@ public class EnemyBase : MonoBehaviour
     {
         m_IsDead = true;
         m_Anima.SetTrigger("Dead");
+
+        Spawner.instance.m_RemainEnemies--;
     }
 }
