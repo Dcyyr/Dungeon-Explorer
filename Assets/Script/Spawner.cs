@@ -49,6 +49,11 @@ public class Spawner : MonoBehaviour
             //
 
         }
+
+        if(m_RemainEnemies == 0 && GameManager.instance.m_IsWin)
+        {
+            GameManager.instance.Win();
+        }
     }
 
     public void SpawnEnemies(List<Transform> spawnList)

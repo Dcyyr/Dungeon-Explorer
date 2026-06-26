@@ -220,6 +220,8 @@ public class Player : MonoBehaviour
     {
         m_IsDead = true;
         m_Anim.SetTrigger("Dead");
+
+        GameManager.instance.GameOver();
     }
 
 
