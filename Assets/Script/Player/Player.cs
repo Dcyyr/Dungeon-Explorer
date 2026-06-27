@@ -47,6 +47,10 @@ public class Player : MonoBehaviour
     public float m_AttackDamage = 20f;
     public BoxCollider m_AttackBox;
 
+
+    //coin
+    public int m_Coin = 200;
+
     private void Awake()
     {
 
@@ -208,6 +212,7 @@ public class Player : MonoBehaviour
         m_CurrentHealth = Mathf.Max(0, m_CurrentHealth);
         m_IsHurt = true;
         m_Anim.SetTrigger("Hurt");
+        GameManager.instance.UpdateHealthBar();
 
         if (m_CurrentHealth <= 0)
         {
@@ -249,6 +254,13 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    public void AddHealth(float value)
+    {
+        m_CurrentHealth = Mathf.Min(m_CurrentHealth + value,m_MaxHealth);
+
+        GameManager.instance.UpdateHealthBar();
+    }
 
 
 }

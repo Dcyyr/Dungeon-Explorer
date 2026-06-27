@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Xml.Schema;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour
     public bool m_IsGameOver = false;
 
 
+    public Slider m_HealthSlider;
+    public TMP_Text m_CoinText;
+
 
     private void Awake()
     {
@@ -39,7 +43,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-            m_PausePanel = GameObject.Find("Pause");
+        m_PausePanel = GameObject.Find("Pause");
         m_GameOverPanel = GameObject.Find("GameOver");
         m_WinPanel = GameObject.Find("Win");
 
@@ -47,7 +51,23 @@ public class GameManager : MonoBehaviour
         m_ResumeButton = GameObject.Find("Resume").GetComponent<Button>();
         m_MainMenuButton = GameObject.Find("MainMenu").GetComponent<Button>();
         m_ReStartButton = GameObject.Find("Restart").GetComponent<Button>();
-        //m_QuitButton = GameObject.Find("Quit").GetComponent<Button>();
+
+        m_CoinText = GameObject.Find("CoinText").GetComponent<TMP_Text>();
+        m_HealthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
+
+        UpdateCoin();
+        UpdateHealthBar();
+    }
+
+
+    public void UpdateCoin()
+    {
+        m_CoinText.text = Player.instance.m_Coin.ToString();
+    }
+
+    public void UpdateHealthBar()
+    {
+        m_HealthSlider.value = Player.instance.m_CurrentHealth / Player.instance.m_MaxHealth;
     }
 
     private void Start()
